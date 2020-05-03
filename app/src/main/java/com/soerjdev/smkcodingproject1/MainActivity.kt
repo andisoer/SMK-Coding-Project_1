@@ -1,5 +1,6 @@
 package com.soerjdev.smkcodingproject1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -59,7 +60,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun intentToProfil() {
-
+        val intent = Intent(this, ProfilActivity::class.java)
+        startActivity(intent)
     }
 
     private fun showToast(message: String) {
