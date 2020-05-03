@@ -61,7 +61,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun intentToProfil() {
         val intent = Intent(this, ProfilActivity::class.java)
+
+        val bundle = Bundle()
+        bundle.putString("name", varNamaInput)
+        bundle.putString("gender", varJKInput)
+        bundle.putString("age", varUmurInput)
+        bundle.putString("email", varEmailInput)
+        bundle.putString("phone", varTelpInput)
+        bundle.putString("address", varAlamatInput)
+
+        intent.putExtras(bundle)
         startActivity(intent)
+        finish()
     }
 
     private fun showToast(message: String) {
