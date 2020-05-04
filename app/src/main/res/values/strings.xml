@@ -2,6 +2,14 @@
     <string name="app_name">SMKCodingProject1</string>
     <string name="titik_dua">:</string>
     <string name="slash">-</string>
+    <string name="nama"><i>Nama</i></string>
+    <string name="andi_surya">Andi Surya</string>
+    <string name="email"><i>Email</i></string>
+    <string name="andi502_as_gmail_com">andi502.as@gmail.com</string>
+    <string name="no_telp"><i>No. Telp</i></string>
+    <string name="_085235461523">085235461523</string>
+    <string name="alamat"><i>Alamat</i></string>
+    <string name="jl_brigjen_slamet_riadi_vii_155_rt_04_rw_03">Jl. Brigjen Slamet Riadi VII / 155 RT 04 RW 03</string>
 
     <string-array name="spinner_gender">
         <item>Pilih Jenis Kelamin</item>
