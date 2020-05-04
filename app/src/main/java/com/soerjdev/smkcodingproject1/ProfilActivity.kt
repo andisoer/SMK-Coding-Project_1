@@ -1,13 +1,19 @@
 package com.soerjdev.smkcodingproject1
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import kotlinx.android.synthetic.main.activity_profil.*
 
 class ProfilActivity : AppCompatActivity() {
+
+    companion object{
+        val REQUEST_CODE_EDIT_NAMA = 10
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,12 +23,12 @@ class ProfilActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        getDataIntent()
         btnAbout.setOnClickListener {
             intentTo(Intent(this, AboutActivity::class.java)) }
-        btnEditNama.setOnClickListener {
-            intentTo(Intent(this, EditNamaActivity::class.java)) }
+        btnEditNama.setOnClickListener { intentToEditNama() }
         btnDial.setOnClickListener { dialPhoneNumber(tvTelpProfile.text.toString()) }
+
+        getDataIntent()
     }
 
     private fun getDataIntent() {
@@ -52,7 +58,28 @@ class ProfilActivity : AppCompatActivity() {
         }
     }
 
+    private fun intentToEditNama() {
+        val intent = Intent(this, EditNamaActivity::class.java)
+
+        val varNama = tvNamaProfile.text.toString()
+        intent.putExtra("name", varNama)
+
+        startActivityForResult(intent, REQUEST_CODE_EDIT_NAMA)
+    }
+
     private fun intentTo(intent: Intent) {
         startActivity(intent)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == REQUEST_CODE_EDIT_NAMA){
+            if(resultCode == Activity.RESULT_OK){
+                val resultData = data?.getStringExtra("name")
+                tvNamaProfile.text = resultData
+            }else{
+                Toast.makeText(this, "Edit cancelled", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
